@@ -12,7 +12,7 @@
   </head>
   <body style="margin: 0; overflow: hidden">
     <a-scene embedded arjs vr-mode-ui="enabled: false;">
-	    
+
       <!-- 3DCGモデルを読み込む -->
       <a-assets>
         <a-asset-item id="ko-nodj" src="./assets/ko-nodj.glb"></a-asset-item>
@@ -26,6 +26,22 @@
 
       <!-- カメラを追加 -->
       <a-entity camera></a-entity>
+
+      <!-- 写真撮影のボタンを追加 -->
+      <a-entity
+        id="photoButton"
+        geometry="primitive: plane; width: 0.2; height: 0.1"
+        material="color: #4CC3D9"
+        position="0 0.1 -0.5"
+        text="value: Take Photo; align: center"
+        event-set__mouseenter="scale: 1.1 1.1 1"
+        event-set__mouseleave="scale: 1 1 1"
+        event-set__click="_event: click; capture: true; src: #canvas"
+      ></a-entity>
+
+      <!-- 写真を表示するためのキャンバス -->
+      <a-canvas id="canvas"></a-canvas>
+
     </a-scene>
   </body>
 </html>
